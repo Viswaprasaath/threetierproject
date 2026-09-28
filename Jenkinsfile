@@ -42,6 +42,9 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
+                    
+                    export KUBECONFIG=/var/lib/jenkins/.kube/config
+                    
                     minikube kubectl -- apply -f kube/
                 '''
             }
